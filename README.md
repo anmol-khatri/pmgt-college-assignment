@@ -1,1 +1,0 @@
-# pmgt-college-assignment
