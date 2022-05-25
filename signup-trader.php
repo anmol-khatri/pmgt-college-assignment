@@ -7,32 +7,33 @@
     <link rel="icon" href="images/ClickHudderFax-name.png" type="image/x-icon">
     <title>ClickHudderFax</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" href="css/drop-uploader.css">
     <link rel="stylesheet" type="text/css" href="css/form.css">
     <link rel="stylesheet" type="text/css" href="css/signup.css">
-    <link rel="stylesheet" type="text/css" href="css/max-width-wrapper--signup-customer.css">
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 </head>
 <body>
-    <?php
+<?php
 include 'header.php';
 ?>
     <main>
         <div class="max-width-wrapper">
             <div class="signup-outer-wrapper">
                 <div class="signup-wrapper">
-                    <div class="signup-side-banner">
+                    <div class="signup-trader-side-banner">
                     </div>
                     <div class="signup-container">
                         <div>
-                            <img src="images/click-name.png" class="login-logo" alt="">
+                            <img src="images/clickhudder-name.png" class="login-logo" alt="">
                         </div>
+
                         <div class="form-wrapper">
                             <form class="login-form" action="#" method="POST" >
-                                <div>
-                                    <a href="signup-trader.php" class="note-link-under">SIGNUP AS TRADER</a>
-                                </div>
-                                <br>
-                                <Span>--------------------------------SIGNUP PAGE FOR CUSTOMER--------------------------------</Span>
+                              <div>
+                                <a href="signup.php" class="note-link-under">SIGNUP AS CUSTOMER</a>
+                            </div>
+                            <br>
+                            <Span>--------------------------------SIGNUP PAGE FOR TRADER--------------------------------</Span>
                                 <div class="form-row">
                                     <div class="form-col-2">
                                         <div class="inpt-wrapper">
@@ -64,17 +65,43 @@ include 'header.php';
                                 <div class="form-row">
                                     <div class="form-col-2">
                                         <div class="inpt-wrapper">
-                                            <label for="passwordId">Password</label>
-                                            <input id="passwordId" type="password" name="password" placeholder="Your Password...">
+                                            <label for="pan">PAN</label>
+                                            <input id="pan" type="number" name="pan" placeholder="Your PAN...">
                                         </div>
                                     </div>
                                     <div class="form-col-2">
                                         <div class="inpt-wrapper">
-                                            <label for="confPassId">Confirm Password</label>
-                                            <input id="confPassId" type="password" name="confPass" placeholder="Confirm your password...">
+                                            <label for="typeId">Product Type</label>
+                                            <input id="typeId" type="text" name="type" placeholder="Your product type...">
                                         </div>
                                     </div>
                                 </div>
+                                <div class="inpt-wrapper">
+                                    <label for="detailsId">Product Details</label>
+                                    <textarea name="details" id="detailsId" placeholder="Decribe your product in few words..."></textarea>
+                                </div>
+
+                                <div class="inpt-wrapper">
+                                    <label >Documents</label>
+                                    <div id="drop-area">
+                                        <form class="my-form">
+                                            <div class="cloud-img-wrapper">
+                                                <img class="cloud-upload-img" src="images/cloud-upload.svg" alt="Cloud-upload-icon">
+                                            </div>
+                                            <div class="drop-tips">
+                                                Drop files here or <label for="fileElem" class="browse-files">Browse</label>
+                                            </div>
+                                            <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
+                                        </form>
+                                        <div class="progress-wrapper">
+                                            <progress id="progress-bar" max=100 value=0></progress>
+                                        </div>
+                                        <div id="gallery"></div>
+                                    </div>
+                                </div>
+
+                               
+
                                 <div class="inpt-wrapper">
                                     <input id="termsId" type="checkbox" name="terms" placeholder="Your Password..."> I agree to terms and conditions
                                 </div>
@@ -89,6 +116,7 @@ include 'header.php';
                                     <a href="login.php" class="note-link-under">Login</a>
                                 </div>
 
+                                
                             </div>
                         </div>
                     </div>
@@ -99,6 +127,8 @@ include 'header.php';
     <?php
 include 'footer.php';
 ?>
+
     <script src="js/header.js"></script>
+    <script src="js/my-drop-uploader.js"></script>
 </body>
 </html>

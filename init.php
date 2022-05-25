@@ -1,12 +1,3 @@
 <?php 
-//Set up the database access credentials
-$hostname = 'localhost'; 
-$username = 'root'; //your standard uni id
-$password = ''; // the password found on the W: drive
-$databaseName = 'click'; //the name of the db you are using on phpMyAdmin
-if ($connection = mysqli_connect($hostname, $username, $password, $databaseName)) {
-	echo "connected successfully<br>";
-}
-else {
-	echo "not connected";
-}
+session_start();
+$conn =oci_connect('che','Hello12#','localhost/XE'); if(!$conn){ $e=oci_error(); trigger_error(htmlentities($e['message'],ENT_QUOTES), E_USER_ERROR); }  else{  echo "Connected";  } ?>

@@ -1,0 +1,11 @@
+.validation:invalid {
+  border: 2px dashed red;
+}
+
+.validation:invalid:required {
+  background-image: linear-gradient(to right, pink, lightgreen);
+}
+
+.validation:valid {
+  border: 2px solid black;
+}
