@@ -112,6 +112,7 @@ if ($row = oci_fetch_assoc($query_login)){
     }
     elseif ($access == "customer") {
         $_SESSION['usrid'] = $row['CUST_ID'];
+            header ('location:./index.php');
 
     }
     

@@ -41,7 +41,7 @@ include 'header.php';
               <div class="cart-items-summary-container">
                 <div class="cart-items-container">
                   <div class="card-row">
-                    <?php 
+                     <?php
                                 $id = $_SESSION['usrid'];
                                 // $add = "where type=$type and shop = $shop"
                                 $sql = "select * from cart 

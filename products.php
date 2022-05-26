@@ -26,7 +26,7 @@ include 'header.php';
                         Manage Products 
                         <?php 
                                 $id = $_SESSION['usrid'];
-                                 $sql = "select count(trader.trd_id) as COUNT from shop inner join trader on trader.trd_id = shop.trd_id inner join product on product.shp_id = shop.shp_id where trader.trd_id=1 group by trader.trd_id";
+                                 $sql = "select count(prd_id) as COUNT from product";
                                $query_usr = oci_parse($conn, $sql);
                                 $result = oci_execute($query_usr);
                                 
@@ -40,7 +40,7 @@ include 'header.php';
                 </div>
                 <div class="search-body">
                     <div class="filters-wrapper">
-                        <form id="filter-form" class="filter-form" action="#" method="get">
+                        <form id="filter-form" class="filter-form" action="search.php" method="post">
                             <div class="filter-row">
                                 <div class="filter-heading">Rating: </div>
                                 <div class="filter-body">
@@ -98,9 +98,10 @@ include 'header.php';
                         <div class="card-row">
                             <?php 
                                 $id = $_SESSION['usrid'];
+                                // $add = "where type=$type and shop = $shop"
                                  $sql = "select * from shop
                     inner join trader on trader.trd_id = shop.trd_id
-                    inner join product on product.shp_id = shop.shp_id where trader.trd_id=$id";
+                    inner join product on product.shp_id = shop.shp_id";
                                $query_usr = oci_parse($conn, $sql);
                                 $result = oci_execute($query_usr);
                                 

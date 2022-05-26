@@ -78,13 +78,13 @@
                   </a>";}?>
                   <?php if (isset($_SESSION['role'])) {
 
-                    echo"<a href='#''>
+                    echo"<a href='order.php''>
                         <span class='iconify' data-icon='la:box' data-inline='false'></span>
                         <span>Orders</span>
                     </a>";}?>
 
                     <?php if (isset($_SESSION['role']) &&($_SESSION['role']=="customer")) {
-                    echo"<a href='#''>
+                    echo"<a href='wishlist.php''>
                         <span class='iconify' data-icon='bi:suit-heart' data-inline='false'></span>
                         <span>Wishlist</span>
                     </a>";}?>

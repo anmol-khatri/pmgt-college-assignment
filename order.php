@@ -23,10 +23,10 @@ include 'header.php';
             <div class="main-search-wrapper">
                 <div class="search-headers">
                     <div class="search-results">
-                        Manage Products 
+                        All Orders
                         <?php 
                                 $id = $_SESSION['usrid'];
-                                 $sql = "select count(trader.trd_id) as COUNT from shop inner join trader on trader.trd_id = shop.trd_id inner join product on product.shp_id = shop.shp_id where trader.trd_id=1 group by trader.trd_id";
+                                 $sql = "select count(ord_id) as COUNT from orders";
                                $query_usr = oci_parse($conn, $sql);
                                 $result = oci_execute($query_usr);
                                 
@@ -36,71 +36,16 @@ include 'header.php';
                             }
                             ?>
                     </div>
-                    <a href="add-product.php" class="add-product">Add Product</a>
                 </div>
                 <div class="search-body">
-                    <div class="filters-wrapper">
-                        <form id="filter-form" class="filter-form" action="#" method="get">
-                            <div class="filter-row">
-                                <div class="filter-heading">Rating: </div>
-                                <div class="filter-body">
-                                    <div class="filter-stars-row">
-                                        <a href="#">
-                                            <div class="md-stars" style="--rating: 5"></div>
-                                        </a>
-                                    </div>
-                                    <div class="filter-stars-row">
-                                        <a href="#" class="d-flex">
-                                            <div class="md-stars" style="--rating: 4"></div>
-                                            <div class="and-up"> & above</div>
-                                        </a>
-                                    </div>
-                                    <div class="filter-stars-row">
-                                        <a href="#" class="d-flex">
-                                            <div class="md-stars" style="--rating: 3"></div>
-                                            <div class="and-up"> & above</div>
-                                        </a>
-                                    </div>
-                                    <div class="filter-stars-row">
-                                        <a href="#" class="d-flex">
-                                            <div class="md-stars" style="--rating: 2"></div>
-                                            <div class="and-up"> & above</div>
-                                        </a>
-                                    </div>
-                                    <div class="filter-stars-row">
-                                        <a href="#" class="d-flex">
-                                            <div class="md-stars" style="--rating: 1"></div>
-                                            <div class="and-up"> & above</div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="filter-row">
-                                <div class="filter-heading">
-                                    Price:
-                                </div>
-                                <div class="filter-body">
-                                    <div id="myRangeSlider" class="myRangeSlider"></div>
-                                    <!-- <input  type="text" id="myRangeSlider" /> -->
-                                    <div class="min-max-wrapper">
-                                        <input class="minMaxPrice" type="number" name="minPrice" id="minPrice" placeholder="Min" value="1000" readonly>
-                                        <input class="minMaxPrice" type="number" name="maxPrice" id="maxPrice" placeholder="Max" value="4000" readonly>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="filter-row">
-                                <div class="filter-btn">Apply</div>
-                                <div class="filter-reset-btn">Reset</div>
-                            </div>
-                        </form>
-                    </div>
                     <div class="results-wrapper">
                         <div class="card-row">
                             <?php 
                                 $id = $_SESSION['usrid'];
+                                // $add = "where type=$type and shop = $shop"
                                  $sql = "select * from shop
                     inner join trader on trader.trd_id = shop.trd_id
-                    inner join product on product.shp_id = shop.shp_id where trader.trd_id=$id";
+                    inner join product on product.shp_id = shop.shp_id";
                                $query_usr = oci_parse($conn, $sql);
                                 $result = oci_execute($query_usr);
                                 
@@ -113,11 +58,6 @@ include 'header.php';
                                 $username = $row['USERNAME'];
                                 echo "<div class='card-col-big'>
                                 <div class='card-big'>
-                                    <div class='card-img-wrapper'>
-                                        <a href='product.php'>
-                                            <img class='card-big-img' src='images/$prdimg' alt='hh'>
-                                        </a>
-                                    </div>
                                     <div class='card-big-body'>
                                         <div class='card-big-title'>
                                             <a href='product.php'>
