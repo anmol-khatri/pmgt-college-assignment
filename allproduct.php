@@ -14,40 +14,17 @@
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 </head>
 <body>
-    <?php
+<?php
 include 'header.php';
 ?>
-
-            <?php 
-                    $search = $_POST['txtSearch'];
-            ?>
     <main>
         <div class="max-width-wrapper">
             <div class="main-search-wrapper">
-                <div class="search-results">
-                    Search Results For: <?php echo $search; ?>
-                </div>
                 <div class="search-headers">
-                    <div class="sort-by-container">
-                        <label for="sortBy">Sort By: </label>
-                        <select name="sortBy" id="sortBy" class="sortBy">
-                            <option value="">
-                                Relevent
-                            </option>
-                            <option value="">
-                                Price: Low to High
-                            </option>
-                            <option value="">
-                                Price: High to Low
-                            </option>
-                            <option value="">
-                                Rating
-                            </option>
-                        </select>
+                    <div class="search-results">
+                        Manage Products (54)
                     </div>
-                    <div class="results-number">
-                        49 Results
-                    </div>
+                    <a href="add-product.php" class="add-product">Add Product</a>
                 </div>
                 <div class="search-body">
                     <div class="filters-wrapper">
@@ -147,8 +124,11 @@ include 'header.php';
                                         </div>
                                         <div class="card-big-links">
                                             <div class="card-cart">
+                                                <span class="iconify" data-icon="akar-icons:edit" data-inline="false"></span>
+                                            </div>
+                                            <div class="card-cart">
                                                 <span></span>
-                                                <span class="iconify big-btn" data-icon="fluent:cart-20-regular" data-inline="false"></span>
+                                                <span class="iconify" data-icon="ic:baseline-delete-forever" data-inline="false"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -194,8 +174,11 @@ include 'header.php';
                                         </div>
                                         <div class="card-big-links">
                                             <div class="card-cart">
+                                                <span class="iconify" data-icon="akar-icons:edit" data-inline="false"></span>
+                                            </div>
+                                            <div class="card-cart">
                                                 <span></span>
-                                                <span class="iconify big-btn" data-icon="fluent:cart-20-regular" data-inline="false"></span>
+                                                <span class="iconify" data-icon="ic:baseline-delete-forever" data-inline="false"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -241,55 +224,11 @@ include 'header.php';
                                         </div>
                                         <div class="card-big-links">
                                             <div class="card-cart">
-                                                <span></span>
-                                                <span class="iconify big-btn" data-icon="fluent:cart-20-regular" data-inline="false"></span>
+                                                <span class="iconify" data-icon="akar-icons:edit" data-inline="false"></span>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-col-big">
-                                <div class="card-big">
-                                    <div class="card-img-wrapper">
-                                        <a href="product.php">
-                                            <img class="card-big-img" src="images/placeholder-image.png" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="card-big-body">
-                                        <div class="card-big-title">
-                                            <a href="product.php">
-                                                Product Title
-                                            </a>
-                                        </div>
-                                        <div class="card-big-star-price">
-                                            <div class="sm-stars" style="--rating: 2.5;"></div>
-                                            <div class="card-big-price">2000 GBP</div>
-                                        </div>
-                                        <div class="card-key-value-wrapper">
-                                            <div class="card-key-value-row">
-                                                <div class="card-key">Fresheness</div>
-                                                <div class="card-value">
-                                                    <span class="light-text">New</span>
-                                                    <span>(Extra Fresh)</span>
-                                                </div>
-                                            </div>
-                                            <div class="card-key-value-row">
-                                                <div class="card-key">Trader</div>
-                                                <div class="card-value">
-                                                    <span class="">Trader Name</span>
-                                                </div>
-                                            </div>
-                                            <div class="card-key-value-row">
-                                                <div class="card-key">Stock</div>
-                                                <div class="card-value">
-                                                    <span class="light-text">20 kgs</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-big-links">
                                             <div class="card-cart">
                                                 <span></span>
-                                                <span class="iconify big-btn" data-icon="fluent:cart-20-regular" data-inline="false"></span>
+                                                <span class="iconify" data-icon="ic:baseline-delete-forever" data-inline="false"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -307,8 +246,7 @@ include 'header.php';
             </div>
         </div>
     </main>
-
-    <?php
+<?php
 include 'footer.php';
 ?>
 

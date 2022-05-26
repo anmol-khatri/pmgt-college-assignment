@@ -17,6 +17,7 @@
 include 'header.php';
 ?>
     <main>
+
         <div class="max-width-wrapper">
             <div class="main-product-wrapper">
                 <div class="product-details-wrapper">

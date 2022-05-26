@@ -141,7 +141,6 @@ include 'header.php';
             $cat =$_POST['txtAccess'];
 
             $sql = "insert into trader values(trdid_seq.NEXTVAL, '$username', '$password','$fullname','$email',$contact,'$details',$pan,$cat)";
-            echo $sql;
             $query = oci_parse($conn, $sql);
            if($result = oci_execute($query)) {
                 echo"values inserted";

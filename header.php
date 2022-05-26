@@ -26,21 +26,12 @@
         </div>
         <div class="search-box-wrapper">
             <form class="search-form" action="search.php" method="POST">
-                <div class="search-categories">
-                    <select class="category-select" name="searchBy">
-                        <option value="0">All Product Types</option>
-                        <option value="1">Bakery</option>
-                        <option value="2">Fish</option>
-                        <option value="3">Ready To Eat</option>
-                        <option value="4">Grocery</option>
-                        <option value="5">Meat</option>
-                    </select>
-                    <span class="iconify select-arrow" data-icon="ic:round-keyboard-arrow-down" data-inline="false"></span>
-                </div>
+                
                 <div class="inp-select-line"></div>
-                <input class="search-inpt" name="q" type="text" placeholder="Search Products, categories...">
+                <input class="search-inpt" name="txtSearch" type="text" placeholder="Search Products, categories...">
                 <input type="submit" class="search-btn" name="btnSubmit" value="Search">
             </form>
+
         </div>
         <div class="cart-account-wrapper">
             <div class="cart-account-item account-nav-link">

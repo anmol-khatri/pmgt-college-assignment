@@ -61,7 +61,7 @@ include "init.php";
                             </form>
                             <div class="login-footer">
                                 <span>New Customer? </span>
-                                <a href="/signup.php" class="note-link-under">Create Account</a>
+                                <a href="signup.php" class="note-link-under">Create Account</a>
                             </div>
                         </div>
                     </div>
