@@ -38,7 +38,7 @@
                 <span class="iconify account" data-icon="line-md:account" data-inline="false"></span>
                 <span class="cart-icon-title">
                     <?php if (isset($_SESSION['role'])) {
-                        echo "Welcome ". $_SESSION['role'];}
+                        echo "Welcome ". $_SESSION['user'];}
                         
                         else{
                              echo"Hello, Sign in<br>Account & Lists";
@@ -76,6 +76,13 @@
                       <span class='iconify' data-icon='line-md:account' data-inline='false'></span>
                       <span>Trader Account</span>
                   </a>";}?>
+                  <?php if (isset($_SESSION['role']) &&($_SESSION['role']=="customer")) {
+
+                    echo"<a href='products.php''>
+                        <span class='iconify' data-icon='la:box' data-inline='false'></span>
+                        <span>Products</span>
+                    </a>";}?>
+
                   <?php if (isset($_SESSION['role'])) {
 
                     echo"<a href='order.php''>

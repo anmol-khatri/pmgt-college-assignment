@@ -21,78 +21,72 @@ include 'header.php';
         <div class="max-width-wrapper">
             <div class="main-product-wrapper">
                 <div class="product-details-wrapper">
-                    <div class="products-main-div-wrapper">
-                        <div class="product-gallery">
-                            <div class="product-preiview-img-wrapper">
-                                <img id="preview-img" class="product-preiview-img" src="images/greengrocers.jpg" alt="Alt">
-                            </div>
-                            <div class="product-img-options">
-                                <div class="shop-by-images-wrapper">
-                                    <div class="shop-by-images-container">
-                                        <img class="product-img-indicator" src="images/butchers.jpg" alt="">
-                                        <img class="product-img-indicator" src="images/greengrocers.jpg" alt="">
-                                        <img class="product-img-indicator" src="images/fishmongers.jpg" alt="">
-                                        <img class="product-img-indicator" src="images/bakery.jpg" alt="">
-                                        <img class="product-img-indicator" src="images/delicateseen.jpg" alt="">
-                                    </div>
-                                    <div class="shop-by-controls d-none">
-                                        <span id="shop-by-prev">
-                                            <span class="iconify" data-icon="akar-icons:circle-chevron-left-fill" data-inline="false"></span>
-                                        </span>
-                                        <span id="shop-by-next">
-                                            <span class="iconify" data-icon="akar-icons:circle-chevron-right-fill" data-inline="false"></span>
-                                        </span>
-                                    </div>
+
+                    <?php
+                    $prdid = $_GET['prdid'];
+                    $sql = "select * from product where prd_id = $prdid";
+                    $query_usr = oci_parse($conn, $sql);
+                    $result = oci_execute($query_usr);  
+                    if ($row = oci_fetch_assoc($query_usr)){
+                        $prdimg = $row['PRD_IMG'];
+                        $prdname = $row['PRD_NAME'];
+                        $price = $row['PRD_PRICE'];
+                        $stock = $row['PRD_STOCK'];
+                        $details = $row['PRD_DESCRIPTION'];
+
+                        echo "<div class='products-main-div-wrapper'>
+                            <div class='product-gallery'>
+                                <div class='product-preiview-img-wrapper'>
+                                    <img id='preview-img' class='product-preiview-img' src='images/$prdimg' alt='Alt'>
                                 </div>
                             </div>
-                        </div>
-                        <div class="product-details">
-                            <div id="zoom-img-result" class="zoom-img-result"></div>
-                            <div class="product-title">
-                                Product Title
-                            </div>
-                            <div class="rating-share-wrapper">
-                                <div>
-                                    <div class="product-ratings-wrap">
-                                        <div class="md-stars" style="--rating: 4.4;"></div>
-                                        <div class="product-rating-in-num">
-                                            4.4 Ratings
+                            <div class='product-details'>
+                                <div id='zoom-img-result' class='zoom-img-result'></div>
+                                <div class='product-title'>
+                                    $prdname
+                                </div>
+                                <div class='rating-share-wrapper'>
+                                    <div>
+                                        <div class='product-ratings-wrap'>
+                                            <div class='md-stars' style='--rating: 4.4;'></div>
+                                            <div class='product-rating-in-num'>
+                                                4.4 Ratings
+                                            </div>
+                                        </div>
+                                        <div class='d-flex'>
+                                            <div class='stock-text'>
+                                                In Stock: $stock
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="d-flex">
-                                        <div>
-                                            <a class="blue-text" href="">Visit Trader</a>
-                                        </div>
-                                        <div class="stock-text">
-                                            In Stock
-                                        </div>
+                                    <div id='share-product' class='share-product'>
+                                        <span class='iconify' data-icon='bi:share-fill' data-inline='false'></span>
                                     </div>
                                 </div>
-                                <div id="share-product" class="share-product">
-                                    <span class="iconify" data-icon="bi:share-fill" data-inline="false"></span>
+                                <div class='price-wrapper'>
+                                    Price: Rs. $price
+                                </div>
+                                <div class='product-desc'>
+                                    $details
+                                </div>
+                                <div class='quantity-wrapper'>
+                                    <span>Quantity</span>
+                                    <button id='subtract-quantity' class='quantity-btn'>-</button>
+                                    <span id='quantity-value' class='quantity'>1</span>
+                                    <button id='add-quantity' class='quantity-btn'>+</button>
+                                </div>
+                                <div class='product-actions'>
+                                    <button id='buy-now' class='product-action buy-now'>Buy Now</button>
+
+                                    <button id='add-to-cart' class='product-action add-to-cart'><a href='cartadd.php?prdid=$prdid'>Add to Cart</a></button>
                                 </div>
                             </div>
-                            <div class="price-wrapper">
-                                Price: 45 GBP
-                            </div>
-                            <div class="product-desc">
-                                This is sample description. Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus at facilis ipsam, eos tempore veritatis! Ex adipisci eaque distinctio ipsam labore ipsa vitae, non perspiciatis dolore nulla dicta consectetur. Quidem.
-                            </div>
-                            <div class="allery-inform">
-                                This is sample description. Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus at facilis ipsam, eos tempore veritatis! Ex adipisci eaque distinctio ipsam labore ipsa vitae, non perspiciatis dolore nulla dicta consectetur. Quidem.
-                            </div>
-                            <div class="quantity-wrapper">
-                                <span>Quantity</span>
-                                <button id="subtract-quantity" class="quantity-btn">-</button>
-                                <span id="quantity-value" class="quantity">1</span>
-                                <button id="add-quantity" class="quantity-btn">+</button>
-                            </div>
-                            <div class="product-actions">
-                                <button id="buy-now" class="product-action buy-now">Buy Now</button>
-                                <button id="add-to-cart" class="product-action add-to-cart">Add to Cart</button>
-                            </div>
-                        </div>
-                    </div>
+                        </div>";
+                    }
+
+                    ?>
+
+
                     <div class="prod-section-wrapper">
                         <div class="rating-reviews-wrapper">
                             <div class="prod-section-heading">

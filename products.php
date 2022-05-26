@@ -23,7 +23,7 @@ include 'header.php';
             <div class="main-search-wrapper">
                 <div class="search-headers">
                     <div class="search-results">
-                        Manage Products 
+                        All Products 
                         <?php 
                                 $id = $_SESSION['usrid'];
                                  $sql = "select count(prd_id) as COUNT from product";
@@ -99,9 +99,9 @@ include 'header.php';
                             <?php 
                                 $id = $_SESSION['usrid'];
                                 // $add = "where type=$type and shop = $shop"
-                                 $sql = "select * from shop
-                    inner join trader on trader.trd_id = shop.trd_id
-                    inner join product on product.shp_id = shop.shp_id";
+                                $sql = "select * from shop
+                                inner join trader on trader.trd_id = shop.trd_id
+                                inner join product on product.shp_id = shop.shp_id";
                                $query_usr = oci_parse($conn, $sql);
                                 $result = oci_execute($query_usr);
                                 

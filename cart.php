@@ -60,6 +60,8 @@ where product.prd_id in (select product.prd_id from shop
                                 $price = $row['PRD_PRICE'];
                                 $stock = $row['PRD_STOCK'];
                                 $minord = $row['MIN_ORDER'];
+
+                                $prdid = $_SESSION['oid'];
                                 echo "<div class='card-col-big'>
                                 <div class='card-big'>
                                     <div class='card-img-wrapper'>
