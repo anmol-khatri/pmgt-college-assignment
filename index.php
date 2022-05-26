@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,14 +11,21 @@
     <link rel="stylesheet" type="text/css" href="css/stars.css">
     <link rel="stylesheet" type="text/css" href="css/slider.css">
     <link rel="stylesheet" type="text/css" href="css/product-cards.css">
-    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
 </head>
 <body>
 <?php
+include 'init.php';
 include 'header.php';
+
+if (isset($_SESSION['user'])) {
+    echo $_SESSION['user'];
+}
 ?>
     <main>
-        <div class="max-width-wrapper">
+  <div class="max-width-wrapper">
+    
             <div class="main-wrapper">
                 <div class="home-row-wrapper">
                     <div class="carousel-container">
@@ -32,7 +40,7 @@ include 'header.php';
     
                 <div class="home-row-wrapper">
                     <div class="home-row-title-wrapper">
-                        <div class="home-row-title">Ours Patners Traders</div>
+                        <div class="home-row-title">Ours Partners Traders</div>
                     </div>
                     <div class="home-row-content">
                         <div class="shop-by-images-wrapper shop-img-side-marg">
@@ -272,8 +280,11 @@ include 'header.php';
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
+
+
+  
+        
                 
             </div>
         </div>

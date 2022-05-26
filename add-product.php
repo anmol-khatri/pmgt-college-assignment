@@ -14,18 +14,31 @@
 </head>
 <body>
   <?php
-include 'header.php';
+    include 'header.php';
+    
 ?>
     <main>
+        <?php
+        if($_SESSION['shpid']!="null"){
+            $shpname=$_SESSION['shpname'];
+       echo"<h1>Your shop name is $shpname</h1>";
+    }
+    else{
+
+    }
+        ?>
+        <form method="POST" action="add-product.php">
+            
+        </form>
         <div class="max-width-wrapper">
             <div class="signup-outer-wrapper">
                 <div class="signup-wrapper">
                     <div class="signup-container">
                         <div>
-                            <img src="images/clickhudder-name.png" class="login-logo" alt="">
+                            <img src="images/clickhudderfax-name.png" class="login-logo" alt="h">
                         </div>
                         <div class="form-wrapper">
-                            <form class="login-form" action="addaction.php" method="POST" >
+                            <form class="login-form" action="add-product.php" method="POST" >
                                 <div class="form-row">
                                     <div class="form-col-2">
                                         <div class="inpt-wrapper">
@@ -35,8 +48,8 @@ include 'header.php';
                                     </div>
                                     <div class="form-col-2">
                                         <div class="inpt-wrapper">
-                                            <label for="categoryId">Product Category</label>
-                                            <input id="categoryId" type="text" name="category" placeholder="Product Category...">
+                                            <label for="categoryId">Product Price</label>
+                                            <input id="categoryId" type="number" name="price" placeholder="Product Price...">
                                         </div>
                                     </div>
                                 </div>
@@ -44,26 +57,48 @@ include 'header.php';
                                     <div class="form-col-2">
                                         <div class="inpt-wrapper">
                                             <label for="quantityId">Quantity</label>
-                                            <input id="quantityId" type="text" name="quantity" placeholder="Product Quantity...">
+                                            <input id="quantityId" type="number" name="quantity" placeholder="Product Quantity...">
                                         </div>
                                     </div>
                                     <div class="form-col-2">
                                         <div class="inpt-wrapper">
-                                            <label for="priceId">Price</label>
-                                            <input id="priceId" type="text" name="price" placeholder="Product Price...">
+                                            <label for="priceId">Stock</label>
+                                            <input id="priceId" type="number" name="stock" placeholder="Product Stock...">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-col-2">
                                         <div class="inpt-wrapper">
-                                            <input type="checkbox" name="availability" checked> <span class="grey-text">Availability</span>
+                                            <label for="discountId">Min Order</label>
+                                            <input id="discountId" type="number" name="minOrder" placeholder="Product Min Order...">
                                         </div>
                                     </div>
                                     <div class="form-col-2">
                                         <div class="inpt-wrapper">
-                                            <label for="discountId">Discount</label>
-                                            <input id="discountId" type="number" name="discount" placeholder="Product discount...">
+                                            <label for="discountId">Max Order</label>
+                                            <input id="discountId" type="number" name="maxOrder" placeholder="Product Max Order...">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-col-2">
+                                        <div class="inpt-wrapper">
+                                            <label for="discountId">Allergy Info</label>
+                                            <input id="discountId" type="text" name="allergy" placeholder="Product Allergy Info...">
+                                        </div>
+                                    </div>
+                                    <div class="form-col-2">
+                                        <div class="inpt-wrapper">
+                                            <label for="discountId">Category</label>
+                                            <select name="category" id="typeId" >
+                                              <option value="1" <?php if (isset($_POST['btnSubmit'])){if( $_POST['category'] == '1') echo 'selected="selected"'; }?>>Bakery</option>
+                                              <option value="2" <?php if (isset($_POST['btnSubmit'])) {if( $_POST['category'] == '2') echo 'selected="selected"'; }?>>Fish</option>
+                                              <option value="3" <?php if (isset($_POST['btnSubmit'])){if( $_POST['category'] == '3') echo 'selected="selected"'; }?>>ReadyTE</option>
+                                              <option value="4" <?php if (isset($_POST['btnSubmit'])) {if( $_POST['category'] == '4') echo 'selected="selected"'; }?>>Grocery</option>
+                                              <option value="5" <?php if (isset($_POST['btnSubmit'])){if( $_POST['category'] == '5') echo 'selected="selected"'; }?>>meat</option>
+                                            </select><br>
                                         </div>
                                     </div>
                                 </div>
@@ -72,29 +107,10 @@ include 'header.php';
                                     <textarea name="details" id="detailsId" placeholder="Decribe your product in few words..."></textarea>
                                 </div>
 
-                                <div class="inpt-wrapper">
-                                    <label>Add Images</label>
-                                    <div id="drop-area">
-                                        <form class="my-form">
-                                            <div class="cloud-img-wrapper">
-                                                <img class="cloud-upload-img" src="images/cloud-upload.svg" alt="Cloud-upload-icon">
-                                            </div>
-                                            <div class="drop-tips">
-                                                Drop files here or <label for="fileElem" class="browse-files">Browse</label>
-                                            </div>
-                                            <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
-                                        </form>
-                                        <div class="progress-wrapper">
-                                            <progress id="progress-bar" max=100 value=0></progress>
-                                        </div>
-                                        <div id="gallery"></div>
-                                    </div>
-                                </div>
-
                                 <div class="login-btn-wrapper">
                                     <input type="submit" name="btnSubmit" value="Add" class = "login-btn">
                         
-                                    <input type="submit" name="btnSubmit" value="Delete" class = "delete-btn">
+                                    <input type="submit" name="btnDelete" value="Delete" class = "delete-btn">
                                 </div>
                             </form>
                         </div>
@@ -102,6 +118,38 @@ include 'header.php';
                 </div>
             </div>
         </div>
+            <?php
+            if(isset($_POST['btnSubmit'])){
+                $name = $_POST['name'];
+                $details = $_POST['details'];
+                $price = $_POST['price'];
+                $quantity = $_POST['quantity'];
+                $stock = $_POST['stock'];
+                $minord = $_POST['minOrder'];
+                $maxord = $_POST['maxOrder'];
+                $allergy = $_POST['allergy'];
+                $cat = $_POST['category'];
+                $shp = $_SESSION['shpid'];
+
+
+                $sql = "insert into product values(prdid_seq.NEXTVAL, '$name','$details',$price,$quantity,$stock, $minord, $maxord, '$allergy', $cat, $shp)";
+                
+                //run query and store result
+                $query_add = oci_parse($conn, $sql);
+                
+                if ($result = oci_execute($query_add)){
+                    echo"added values";
+                //     $_SESSION['user'] = $user;
+                //     header ('location:./index.php');
+
+                }
+                else{
+                    echo "false";   
+                } 
+            }
+
+?>
+
     </main>
 <?php
 include 'footer.php';

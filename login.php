@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,15 +14,15 @@
 </head>
 <body>
 <?php
-
-include 'init.php';
-include 'header.php';
+include "init.php";
 ?>
+    
     <main>
         <div class="max-width-wrapper">
             <div class="login-outer-wrapper">
                 <div class="login-wrapper">
                     <div class="login-side-banner">
+                            <img src="images/clickhudderfax-name.png" class="login-logo" alt="h">
                     </div>
                     <div class="login-container">
                         <div class="form-wrapper">
@@ -76,18 +77,43 @@ $access = $_POST['txtAccess'];
 //build query to SELECT records from the users table WHERE
 //the username AND password in the table are equal to those entered.
 if ($access == "customer") {
+    $_SESSION['role'] = "customer";
 
-$sql = "select username, password from customer where username = '$user' and password = '$pass'";
+$sql = "select cust_id,username, password from customer where username = '$user' and password = '$pass'";
 }
 if ($access == "trader") {
+    $_SESSION['role'] = "trader";
 
-$sql = "select username, password from trader where username = '$user' and password = '$pass'";
+$sql = "select trd_id, username, password from trader where username = '$user' and password = '$pass'";
 }
 //run query and store result
 $query_login = oci_parse($conn, $sql);
 $result = oci_execute($query_login);
 if ($row = oci_fetch_assoc($query_login)){
+    
     $_SESSION['user'] = $user;
+    if ($access == "trader") {
+        $_SESSION['usrid'] = $row['TRD_ID'];
+        $id = $row['TRD_ID'];
+        $shpsql = "select shp_id,shp_name from shop inner join trader on shop.trd_id = trader.trd_id where trader.trd_id = $id";
+
+        $query_shop = oci_parse($conn, $shpsql);
+        $result = oci_execute($query_shop);
+        if ($row = oci_fetch_assoc($query_shop)){
+            
+            $_SESSION['shpid']=$row['SHP_ID'];
+            $_SESSION['shpname'] = $row['SHP_NAME'];
+        }
+        else{
+            header('location:addshop.php');
+        }
+
+    }
+    elseif ($access == "customer") {
+        $_SESSION['usrid'] = $row['CUST_ID'];
+
+    }
+    
     header ('location:./index.php');
 
 }

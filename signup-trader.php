@@ -14,6 +14,7 @@
 </head>
 <body>
 <?php
+include "init.php";
 include 'header.php';
 ?>
     <main>
@@ -28,7 +29,7 @@ include 'header.php';
                         </div>
 
                         <div class="form-wrapper">
-                            <form class="login-form" action="#" method="POST" >
+                            <form class="login-form" action="signup-trader.php" method="POST" >
                               <div>
                                 <a href="signup.php" class="note-link-under">SIGNUP AS CUSTOMER</a>
                             </div>
@@ -43,11 +44,12 @@ include 'header.php';
                                     </div>
                                     <div class="form-col-2">
                                         <div class="inpt-wrapper">
-                                            <label for="addressId">Address</label>
-                                            <input id="addressId" type="text" name="address" placeholder="Your Address...">
+                                            <label for="addressId">Username</label>
+                                            <input id="addressId" type="text" name="username" placeholder="Your Username...">
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <div class="form-row">
                                     <div class="form-col-2">
                                         <div class="inpt-wrapper">
@@ -71,8 +73,28 @@ include 'header.php';
                                     </div>
                                     <div class="form-col-2">
                                         <div class="inpt-wrapper">
-                                            <label for="typeId">Product Type</label>
-                                            <input id="typeId" type="text" name="type" placeholder="Your product type...">
+                                            <label for="typeId">Product Category</label>
+                                            <select name="txtAccess" id="typeId" >
+                                      <option value="1" <?php if (isset($_POST['btnSubmit'])){if( $_POST['txtAccess'] == '1') echo 'selected="selected"'; }?>>Bakery</option>
+                                      <option value="2" <?php if (isset($_POST['btnSubmit'])) {if( $_POST['txtAccess'] == '2') echo 'selected="selected"'; }?>>Fish</option>
+                                      <option value="3" <?php if (isset($_POST['btnSubmit'])){if( $_POST['txtAccess'] == '3') echo 'selected="selected"'; }?>>ReadyTE</option>
+                                      <option value="4" <?php if (isset($_POST['btnSubmit'])) {if( $_POST['txtAccess'] == '4') echo 'selected="selected"'; }?>>Grocery</option>
+                                      <option value="5" <?php if (isset($_POST['btnSubmit'])){if( $_POST['txtAccess'] == '5') echo 'selected="selected"'; }?>>meat</option>
+                                    </select><br>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-col-2">
+                                        <div class="inpt-wrapper">
+                                            <label for="emailId">Password</label>
+                                            <input id="emailId" type="password" name="password" placeholder="Your password...">
+                                        </div>
+                                    </div>
+                                    <div class="form-col-2">
+                                        <div class="inpt-wrapper">
+                                            <label for="contactId">Confirm Password</label>
+                                            <input id="contactId" type="password" name="password" placeholder="Password again...">
                                         </div>
                                     </div>
                                 </div>
@@ -81,24 +103,6 @@ include 'header.php';
                                     <textarea name="details" id="detailsId" placeholder="Decribe your product in few words..."></textarea>
                                 </div>
 
-                                <div class="inpt-wrapper">
-                                    <label >Documents</label>
-                                    <div id="drop-area">
-                                        <form class="my-form">
-                                            <div class="cloud-img-wrapper">
-                                                <img class="cloud-upload-img" src="images/cloud-upload.svg" alt="Cloud-upload-icon">
-                                            </div>
-                                            <div class="drop-tips">
-                                                Drop files here or <label for="fileElem" class="browse-files">Browse</label>
-                                            </div>
-                                            <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
-                                        </form>
-                                        <div class="progress-wrapper">
-                                            <progress id="progress-bar" max=100 value=0></progress>
-                                        </div>
-                                        <div id="gallery"></div>
-                                    </div>
-                                </div>
 
                                
 
@@ -107,7 +111,7 @@ include 'header.php';
                                 </div>
 
                                 <div class="login-btn-wrapper">
-                                    <button class="login-btn" type="submit">Signup</button>
+                                    <input type="submit" name="btnSubmit" value="Register " class = "login-btn">
                                 </div>
                             </form>
                             <div class="login-footer space-btwn">
@@ -124,6 +128,26 @@ include 'header.php';
             </div>
         </div>
     </main>
+    <?php
+        if(isset($_POST['btnSubmit'])){
+            
+            $username =$_POST['username'];
+            $password = $_POST['password'];
+             $fullname =$_POST['fullName'];
+            $email =$_POST['email'];
+            $contact =$_POST['contact'];
+             $details =$_POST['details'];
+            $pan =$_POST['pan'];
+            $cat =$_POST['txtAccess'];
+
+            $sql = "insert into trader values(trdid_seq.NEXTVAL, '$username', '$password','$fullname','$email',$contact,'$details',$pan,$cat)";
+            echo $sql;
+            $query = oci_parse($conn, $sql);
+           if($result = oci_execute($query)) {
+                echo"values inserted";
+           }
+        }
+        ?>
     <?php
 include 'footer.php';
 ?>

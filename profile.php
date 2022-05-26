@@ -14,6 +14,7 @@
 </head>
 <body>
   <?php
+  include 'init.php';
 include 'header.php';
 ?>
     <main>

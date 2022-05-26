@@ -14,8 +14,9 @@
 </head>
 <body>
     <?php
-include 'header.php';
-?>
+        include "init.php";
+        include 'header.php';
+    ?>
     <main>
         <div class="max-width-wrapper">
             <div class="signup-outer-wrapper">
@@ -27,7 +28,7 @@ include 'header.php';
                             <img src="images/click-name.png" class="login-logo" alt="">
                         </div>
                         <div class="form-wrapper">
-                            <form class="login-form" action="#" method="POST" >
+                            <form class="login-form" action="signup.php" method="POST" >
                                 <div>
                                     <a href="signup-trader.php" class="note-link-under">SIGNUP AS TRADER</a>
                                 </div>
@@ -42,8 +43,8 @@ include 'header.php';
                                     </div>
                                     <div class="form-col-2">
                                         <div class="inpt-wrapper">
-                                            <label for="addressId">Address</label>
-                                            <input id="addressId" type="text" name="address" placeholder="Your Address...">
+                                            <label for="addressId">Username</label>
+                                            <input id="addressId" type="text" name="username" placeholder="Your Username...">
                                         </div>
                                     </div>
                                 </div>
@@ -80,7 +81,7 @@ include 'header.php';
                                 </div>
 
                                 <div class="login-btn-wrapper">
-                                    <button class="login-btn" type="submit">Signup</button>
+                                   <input type="submit" name="btnSubmit" value="Register " class = "login-btn">
                                 </div>
                             </form>
                             <div class="login-footer space-btwn">
@@ -95,6 +96,23 @@ include 'header.php';
                 </div>
             </div>
         </div>
+         <?php
+        if(isset($_POST['btnSubmit'])){
+            
+            $username =$_POST['username'];
+            $password = $_POST['password'];
+             $fullname =$_POST['fullName'];
+            $email =$_POST['email'];
+            $contact =$_POST['contact'];
+
+            $sql = "insert into customer values(custid_seq.NEXTVAL, '$username', '$password','$fullname','$email',$contact)";
+            echo $sql;
+            $query = oci_parse($conn, $sql);
+           if($result = oci_execute($query)) {
+                echo"values inserted";
+           }
+        }
+        ?>
     </main>
     <?php
 include 'footer.php';

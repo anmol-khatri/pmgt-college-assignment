@@ -5,8 +5,63 @@ html {
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
 }
+
+body {
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+.shop-container{
+    margin: 100px 0px 220px 50px;
+    padding:100px 40px 100px 50px;
+    font-size: 40px;
+}
+
+.side-navbar {
+  width: 250px;
+  height: 90%;
+  position: fixed;
+  margin-left: -300px;
+  background-color: #100901;
+  transition: 0.5s;
+  z-index: 10;
+}
+
+.nav-link:active,
+.nav-link:focus,
+.nav-link:hover {
+  background-color: #ffffff26;
+}
+
+.my-container {
+  transition: 0.4s;
+}
+
+.active-nav {
+  margin-left: 0;
+}
+
+/* for main section */
+.active-cont {
+  margin-left: 250px;
+}
+
+#menu-btn {
+    position: relative;
+  background-color: #100901;
+  color: #fff;
+  margin-left: 0px;
+}
+
+.my-container input {
+  border-radius: 2rem;
+  padding: 2px 20px;
+}
+
+
 :root {
     --light-green: #34A294;
     --dark-green: #1B5E56;
@@ -76,7 +131,6 @@ input[type=number] {
 /* .max-width-wrapper-customer-profile {
     margin: 120px 400px;
 } */
-
 
 
 /* Header */
@@ -179,11 +233,17 @@ nav {
     flex-grow: 1;
 }
 .search-form input {
+    border: 0;
+}
+.search-inpt{
+    width: 400px;
+}
+.search-input-wrapper {
+    outline: none;
     padding: 0 10px;
     font-size: 14px;
-    border: 0;
     background-color: transparent;
-    height: 40px;
+    
 }
 .inp-select-line {
     height: 20px;
@@ -213,14 +273,11 @@ nav {
     color: #555;
     pointer-events: none;
 }
-.search-form input {
-    width: 100%;
-    outline: none;
-}
+
 .search-btn {
     position: relative;
     cursor: pointer;
-    width: 40px;
+    width: 60px;
     height: 40px;
     border: none;
     background-color: transparent;
@@ -310,6 +367,8 @@ nav {
     font-size: 1rem;
     padding: 15px;
     width: 200px;
+    color: black;
+    text-decoration: none;
 }
 .account-nav-links a:hover {
     color: #000;
@@ -479,7 +538,7 @@ main {
 
 /* Footer */
 footer {
-    padding: 50px 20px 10px 20px;
+    padding: 0px 20px 50px 20px;
     background: #1e6b62;
 }
 .footer-row {
@@ -605,4 +664,121 @@ footer {
 
 @media screen and (max-width: 320px) {
     
+}
+
+/*change password styles*/
+body
+{
+  background:url("http://myminispot.com/images/prox.png");
+  background-size:cover;
+}
+#container
+{
+  position:relative;
+  background:#fff;
+  height:350px;
+  width:300px;
+  top:50%;
+  left:50%;
+  margin-left:-150px;
+  margin-top:100px;
+
+  margin-bottom:250px;
+  
+  box-shadow: 0px 30px 150px;
+  -webkit-box-shadow: 0px 30px 150px;
+  -moz-box-shadow: 0px 30px 150px;
+  
+  border-radius:15px;
+  -webkit-border-radius:15px;
+  -moz-border-radius:15px;
+}
+#header
+{
+  background-color:#14A89F;
+  font-family: 'Francois One', sans-serif;
+  width:300px;
+  position:absolute;
+  top:0;
+  color:white;
+  margin-top:-2px;
+  z-index: 999;
+  
+  border-radius: 15px 15px 0px 0px;
+  -webkit-border-radius: 15px 15px 0px 0px;
+  -moz-border-radius: 15px 15px 0px 0px;
+}
+#footer.incorrect
+{
+  background-color:#14A89F;
+  font-family: 'Francois One', sans-serif;
+  height:75px;
+  width:300px;
+  position:absolute;
+  bottom:0;
+  color:white;
+  margin-bottom:-2px;
+  
+  border-radius: 0px 0px 15px 15px;
+  -webkit-border-radius: 0px 0px 15px 15px;
+  -moz-border-radius: 0px 0px 15px 15px;
+}
+#footer.correct
+{
+  background-color:#84F075;
+  font-family: 'Francois One', sans-serif;
+  height:75px;
+  width:300px;
+  position:absolute;
+  bottom:0;
+  color:white;
+  cursor:pointer;
+  margin-bottom:-2px;
+  
+  border-radius: 0px 0px 15px 15px;
+  -webkit-border-radius: 0px 0px 15px 15px;
+  -moz-border-radius: 0px 0px 15px 15px;
+}
+#form
+{
+  height:100px;
+  position:absolute;
+  top:50%;
+  margin-top:-50px;
+  width:75%;
+  left:50%;
+  margin-left:-37.5%;
+}
+input
+{
+  width:215px;
+  margin:0;
+  border:0;
+  border-left:1px solid;
+  border-right:1px solid;
+  outline:none;
+  height:50px;
+  font-size:20px;
+  padding-left:10px;
+}
+input#passOne
+{
+  border-top:1px solid;
+  border-radius:15px 15px 0px 0px;
+  -webkit-border-radius:15px 15px 0px 0px;
+  -moz-border-radius:15px 15px 0px 0px;
+}
+input#passTwo
+{
+  border-bottom:1px solid;
+  border-top:1px solid;
+  
+  border-radius:0px 0px 15px 15px;
+  -webkit-border-radius:0px 0px 15px 15px;
+  -moz-border-radius:0px 0px 15px 15px;
+}
+/*end of change password styles*/
+
+.mx-2{
+    color : white;
 }
