@@ -14,6 +14,7 @@
 
 <header>
     <nav>
+        <div class="nav">
         <div id="menu" class="menu">
             <span></span>
             <span></span>
@@ -132,7 +133,43 @@
                 </span>
             </a>
         </div>
+        </div>
+        
+        <div class="nav-edit">
+                    <ul>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="all-product.php">Product</a></li>
+                        <li><a href="about.php">About Us</a></li>
+                        <li><a href="contact.php">Contact</a></li>
+                        <li><a href="login.php">Login</a></li>
+                    </ul>
+                </div>
     </nav>
+    <div id="overlay"></div>
+    <div id="menu-container" class="menu-container">
+            <div class="menu-content">
+                <a class="menu-link" href="index.php">
+                    <span>Home</span>
+                    <span class="iconify menu-link-icon" data-icon="ant-design:home-outlined" data-inline="false"></span>
+                </a>
+                <a class="menu-link" href="profile.php">
+                    <span>Account</span>
+                    <span class="iconify menu-link-icon" data-icon="line-md:account" data-inline="false"></span>
+                </a>
+                <a class="menu-link" href="">
+                    <span>Notifications</span>
+                    <span class="iconify menu-link-icon" data-icon="ic:baseline-notifications-none" data-inline="false"></span>
+                </a>
+                <a class="menu-link" href="login.php">
+                    <span>Login</span>
+                    <span class="iconify menu-link-icon" data-icon="clarity:login-line" data-inline="false"></span>
+                </a>
+                <a class="menu-link" href="signup.php">
+                    <span>Sign up</span>
+                    <span class="iconify menu-link-icon" data-icon="line-md:account-add" data-inline="false"></span>
+                </a>
+            </div>
+        </div>
     
     <div id="mbl-search-container" class="mbl-search-container"></div>
 </header>

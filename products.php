@@ -127,7 +127,7 @@ include 'header.php';
                                         </div>
                                         <div class='card-big-star-price'>
                                             <div class='sm-stars' style='--rating: 2.5;'></div>
-                                            <div class='card-big-price'>Rs. $price</div>
+                                            <div class='card-big-price'>£ $price</div>
                                         </div>
                                         <div class='card-key-value-wrapper'>
                                             <div class='card-key-value-row'>
