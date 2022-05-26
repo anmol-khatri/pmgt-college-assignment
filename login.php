@@ -100,9 +100,10 @@ if ($row = oci_fetch_assoc($query_login)){
         $query_shop = oci_parse($conn, $shpsql);
         $result = oci_execute($query_shop);
         if ($row = oci_fetch_assoc($query_shop)){
-            
+            echo "true";
             $_SESSION['shpid']=$row['SHP_ID'];
             $_SESSION['shpname'] = $row['SHP_NAME'];
+            header ('location:./index.php');
         }
         else{
             header('location:addshop.php');
@@ -114,7 +115,7 @@ if ($row = oci_fetch_assoc($query_login)){
 
     }
     
-    header ('location:./index.php');
+    
 
 }
 else{

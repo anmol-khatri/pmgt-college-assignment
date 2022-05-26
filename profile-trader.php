@@ -28,7 +28,7 @@ include 'header.php';
                            <img class="user-icon-img" src="images/placeholder-image.png" alt="User-profile-icon">
                        </div>
                        <div class="profile-form-wrapper">
-                            <form class="profile-form" action="#" method="POST" >
+                            <form class="profile-form" action="profile.php" method="POST" >
                                 <div class="form-row">
                                     <div class="form-col-2">
                                         <div class="inpt-wrapper">

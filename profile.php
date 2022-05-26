@@ -14,10 +14,28 @@
 </head>
 <body>
   <?php
-  include 'init.php';
-include 'header.php';
+    include 'init.php';
+    include 'header.php';
+
 ?>
     <main>
+        <?php 
+           $id=  $_SESSION['usrid'] ;
+           $sql = "select * from customer where cust_id= $id";
+           $query_usr = oci_parse($conn, $sql);
+            $result = oci_execute($query_usr);
+            if ($row = oci_fetch_assoc($query_usr)){
+                
+               $username = $row['USERNAME'];
+               $fullname = $row['USR_FULL_NAME'];
+               $email = $row['USR_EMAIL'];
+               $phone = $row['USR_PHONE'];
+               echo "$username, $fullname, $email, $phone";
+            }
+            else{
+                header('location:addshop.php');
+            }
+        ?>
         <div class="max-width-wrapper">
             <div class="profile-outer-wrapper">
                 <div class="profile-wrapper">
@@ -29,18 +47,18 @@ include 'header.php';
                            <img class="user-icon-img" src="images/placeholder-image.png" alt="User-profile-icon">
                        </div>
                        <div class="profile-form-wrapper">
-                            <form class="profile-form" action="#" method="POST" >
+                            <form class="profile-form" action="profile.php" method="POST" >
                                 <div class="form-row">
                                     <div class="form-col-2">
                                         <div class="inpt-wrapper">
                                             <label for="fullNameId">Full Name</label>
-                                            <input id="fullNameId" type="text" name="fullName" placeholder="Your Name..." value="Cristiano Ronaldo" >
+                                            <input id="fullNameId" type="text" name="fullName" placeholder="Your Name..." value="<?php echo "$fullname"?>" >
                                         </div>
                                     </div>
                                     <div class="form-col-2">
                                         <div class="inpt-wrapper">
-                                            <label for="addressId">Address</label>
-                                            <input id="addressId" type="text" name="address" placeholder="Your Address..." value="ClekHudderFax" >
+                                            <label for="addressId">Username</label>
+                                            <input id="addressId" type="text" name="username" placeholder="Your username..." value="<?php echo "$username"?>" >
                                         </div>
                                     </div>
                                 </div>
@@ -48,13 +66,13 @@ include 'header.php';
                                     <div class="form-col-2">
                                         <div class="inpt-wrapper">
                                             <label for="emailId">Email</label>
-                                            <input id="emailId" type="email" name="email" placeholder="Your Email..." value="clickhudderfax@gmail.com">
+                                            <input id="emailId" type="email" name="email" placeholder="Your Email..." value="<?php echo "$email"?>">
                                         </div>
                                     </div>
                                     <div class="form-col-2">
                                         <div class="inpt-wrapper">
                                             <label for="contactId">Contact</label>
-                                            <input id="contactId" type="text" name="contact" placeholder="Your Contact..." value="+449980283498">
+                                            <input id="contactId" type="text" name="contact" placeholder="Your Contact..." value="<?php echo "$phone"?>">
                                         </div>
                                     </div>
                                 </div>
@@ -64,7 +82,7 @@ include 'header.php';
                        
                    </div>
                    <div class="profile-btn-wrapper">
-                    <button class="edit-prfl-btn">Edit Profile</button>
+                    <input type="submit" name="btnSubmit" class="edit-prfl-btn" value="Edit profile">
                     <button>Change Password</button>
                 </div>
                 </div>

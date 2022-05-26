@@ -18,6 +18,17 @@
 include 'header.php';
 ?>
     <main>
+        <?php 
+
+             $sql = "select * from shop
+inner join trader on trader.trd_id = shop.trd_id
+inner join product on product.shp_id = shop.shp_id";
+echo $sql;
+           $query_usr = oci_parse($conn, $sql);
+            $result = oci_execute($query_usr);
+            
+            
+        ?>
         <div class="max-width-wrapper">
             <div class="main-search-wrapper">
                 <div class="search-headers">
@@ -84,156 +95,66 @@ include 'header.php';
                     </div>
                     <div class="results-wrapper">
                         <div class="card-row">
-                            <div class="card-col-big">
-                                <div class="card-big">
-                                    <div class="card-img-wrapper">
-                                        <a href="product.php">
-                                            <img class="card-big-img" src="images/placeholder-image.png" alt="">
+                            <?php 
+                            while ($row = oci_fetch_assoc($query_usr)){
+                                echo "true";
+                                $prdimg = $row['PRD_IMG'];
+                                $prdname = $row['PRD_NAME'];
+                                $price = $row['PRD_PRICE'];
+                                $stock = $row['PRD_STOCK'];
+                                $username = $row['USERNAME'];
+                                echo "<div class='card-col-big'>
+                                <div class='card-big'>
+                                    <div class='card-img-wrapper'>
+                                        <a href='product.php'>
+                                            <img class='card-big-img' src='images/placeholder-image.png' alt='hh'>
                                         </a>
                                     </div>
-                                    <div class="card-big-body">
-                                        <div class="card-big-title">
-                                            <a href="product.php">
-                                                Product Title
+                                    <div class='card-big-body'>
+                                        <div class='card-big-title'>
+                                            <a href='product.php'>
+                                                $prdname
                                             </a>
                                         </div>
-                                        <div class="card-big-star-price">
-                                            <div class="sm-stars" style="--rating: 2.5;"></div>
-                                            <div class="card-big-price">2000 GBP</div>
+                                        <div class='card-big-star-price'>
+                                            <div class='sm-stars' style='--rating: 2.5;'></div>
+                                            <div class='card-big-price'>Rs. $price</div>
                                         </div>
-                                        <div class="card-key-value-wrapper">
-                                            <div class="card-key-value-row">
-                                                <div class="card-key">Fresheness</div>
-                                                <div class="card-value">
-                                                    <span class="light-text">New</span>
+                                        <div class='card-key-value-wrapper'>
+                                            <div class='card-key-value-row'>
+                                                <div class='card-key'>Fresheness</div>
+                                                <div class='card-value'>
+                                                    <span class='light-text'>New</span>
                                                     <span>(Extra Fresh)</span>
                                                 </div>
                                             </div>
-                                            <div class="card-key-value-row">
-                                                <div class="card-key">Trader</div>
-                                                <div class="card-value">
-                                                    <span class="">Trader Name</span>
+                                            <div class='card-key-value-row'>
+                                                <div class='card-key'>Trader</div>
+                                                <div class='card-value'>
+                                                    <span class=''>$username</span>
                                                 </div>
                                             </div>
-                                            <div class="card-key-value-row">
-                                                <div class="card-key">Stock</div>
-                                                <div class="card-value">
-                                                    <span class="light-text">20 kgs</span>
+                                            <div class='card-key-value-row'>
+                                                <div class='card-key'>Stock</div>
+                                                <div class='card-value'>
+                                                    <span class='light-text'>$stock kgs</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card-big-links">
-                                            <div class="card-cart">
-                                                <span class="iconify" data-icon="akar-icons:edit" data-inline="false"></span>
+                                        <div class='card-big-links'>
+                                            <div class='card-cart'>
+                                                <span class='iconify' data-icon='akar-icons:edit' data-inline='false'></span>
                                             </div>
-                                            <div class="card-cart">
+                                            <div class='card-cart'>
                                                 <span></span>
-                                                <span class="iconify" data-icon="ic:baseline-delete-forever" data-inline="false"></span>
+                                                <span class='iconify' data-icon='ic:baseline-delete-forever' data-inline='false'></span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-col-big">
-                                <div class="card-big">
-                                    <div class="card-img-wrapper">
-                                        <a href="product.php">
-                                            <img class="card-big-img" src="images/placeholder-image.png" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="card-big-body">
-                                        <div class="card-big-title">
-                                            <a href="product.php">
-                                                Product Title
-                                            </a>
-                                        </div>
-                                        <div class="card-big-star-price">
-                                            <div class="sm-stars" style="--rating: 2.5;"></div>
-                                            <div class="card-big-price">2000 GBP</div>
-                                        </div>
-                                        <div class="card-key-value-wrapper">
-                                            <div class="card-key-value-row">
-                                                <div class="card-key">Fresheness</div>
-                                                <div class="card-value">
-                                                    <span class="light-text">New</span>
-                                                    <span>(Extra Fresh)</span>
-                                                </div>
-                                            </div>
-                                            <div class="card-key-value-row">
-                                                <div class="card-key">Trader</div>
-                                                <div class="card-value">
-                                                    <span class="">Trader Name</span>
-                                                </div>
-                                            </div>
-                                            <div class="card-key-value-row">
-                                                <div class="card-key">Stock</div>
-                                                <div class="card-value">
-                                                    <span class="light-text">20 kgs</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-big-links">
-                                            <div class="card-cart">
-                                                <span class="iconify" data-icon="akar-icons:edit" data-inline="false"></span>
-                                            </div>
-                                            <div class="card-cart">
-                                                <span></span>
-                                                <span class="iconify" data-icon="ic:baseline-delete-forever" data-inline="false"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-col-big">
-                                <div class="card-big">
-                                    <div class="card-img-wrapper">
-                                        <a href="product.php">
-                                            <img class="card-big-img" src="images/placeholder-image.png" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="card-big-body">
-                                        <div class="card-big-title">
-                                            <a href="product.php">
-                                                Product Title
-                                            </a>
-                                        </div>
-                                        <div class="card-big-star-price">
-                                            <div class="sm-stars" style="--rating: 2.5;"></div>
-                                            <div class="card-big-price">2000 GBP</div>
-                                        </div>
-                                        <div class="card-key-value-wrapper">
-                                            <div class="card-key-value-row">
-                                                <div class="card-key">Fresheness</div>
-                                                <div class="card-value">
-                                                    <span class="light-text">New</span>
-                                                    <span>(Extra Fresh)</span>
-                                                </div>
-                                            </div>
-                                            <div class="card-key-value-row">
-                                                <div class="card-key">Trader</div>
-                                                <div class="card-value">
-                                                    <span class="">Trader Name</span>
-                                                </div>
-                                            </div>
-                                            <div class="card-key-value-row">
-                                                <div class="card-key">Stock</div>
-                                                <div class="card-value">
-                                                    <span class="light-text">20 kgs</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-big-links">
-                                            <div class="card-cart">
-                                                <span class="iconify" data-icon="akar-icons:edit" data-inline="false"></span>
-                                            </div>
-                                            <div class="card-cart">
-                                                <span></span>
-                                                <span class="iconify" data-icon="ic:baseline-delete-forever" data-inline="false"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </div>";
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
