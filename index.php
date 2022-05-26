@@ -79,8 +79,10 @@ if (isset($_SESSION['user'])) {
                 <div class="home-row-content">
                     <div class="card-row">
                         <?php
-
-                            $id = $_SESSION['usrid'];
+                            if(isset($_SESSION['usrid'])){
+                                $id = $_SESSION['usrid'];
+                            }
+                            
                             // $add = "where type=$type and shop = $shop"
                             $sql = "select * from shop
                             inner join trader on trader.trd_id = shop.trd_id
@@ -105,7 +107,7 @@ if (isset($_SESSION['user'])) {
                                             </div>
                                             <div class='card-body'>
                                                 <div class='card-title'>
-                                                    <a href='product.php?prdid=$prdid''>
+                                                    <a href='product.php?prdid=$prdid'>
                                                         $prdname
                                                     </a>
                                                 </div>
